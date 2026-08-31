@@ -1,0 +1,38 @@
+name: Bootstrap COMMAND OS
+
+on:
+  push:
+    branches:
+      - command-os/v2-alpha3
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    if: contains(github.event.head_commit.message, 'bootstrap bundle')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Unpack COMMAND OS source bundle
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          archive = Path('bundle/COMMAND_OS_CORE_v2.zip')
+          with zipfile.ZipFile(archive) as z:
+              z.extractall('.')
+          archive.unlink()
+          Path('bundle').rmdir()
+          Path('.github/workflows/bootstrap-command-os.yml').unlink()
+          PY
+      - name: Commit unpacked source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m "feat: unpack COMMAND OS CORE v2 alpha.3"
+          git push origin HEAD:${GITHUB_REF_NAME}
