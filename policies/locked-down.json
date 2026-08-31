@@ -1,0 +1,46 @@
+{
+  "schema_version": "2.0",
+  "id": "locked-down",
+  "version": "2.0.0-beta.1",
+  "description": "Read-only policy pack for evaluation and audit environments.",
+  "approval_required_effects": [
+    "write",
+    "external_side_effect",
+    "destructive",
+    "production_deploy"
+  ],
+  "separation_of_duties_effects": [
+    "write",
+    "external_side_effect",
+    "destructive",
+    "production_deploy"
+  ],
+  "roles": {
+    "viewer": {
+      "capabilities": [
+        "local.compile",
+        "local.state",
+        "local.trace",
+        "files.read",
+        "github.read",
+        "web.search"
+      ],
+      "effects": [
+        "read"
+      ],
+      "can_approve": []
+    },
+    "analyst": {
+      "inherits": [
+        "viewer"
+      ],
+      "capabilities": [
+        "llm.reason"
+      ],
+      "effects": [
+        "read"
+      ],
+      "can_approve": []
+    }
+  }
+}

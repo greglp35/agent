@@ -35,9 +35,9 @@ Le système doit :
 
 ## Statut
 
-Version actuelle : `2.0.0-alpha.5`
+Version actuelle : `2.0.0-beta.1`
 
-Le projet dispose maintenant d’un parser/runtime, d’un routeur d’experts, d’un Capability Resolver, d’un moteur sémantique host-neutral et d’une couche d’intégration production avec résilience, budgets, approval gates et adapters fournisseurs.
+Le projet est désormais doté d’un parser/runtime, d’un routeur d’experts, d’un Capability Resolver et d’un contrat d’exécution explicite.
 
 ## Alpha.2 — Parser Runtime
 
@@ -69,6 +69,12 @@ Ou :
 ./command-os /council /audit /decision "mon application" --forensic --security --terrain
 ```
 
+### Limite volontaire
+
+Le runtime alpha.2 **compile et planifie** les commandes. Il ne branche pas encore
+les outils réels (web, fichiers, GitHub, déploiement, etc.). Cela vient dans le
+sprint suivant : `Execution Engine + Capability Resolver`.
+
 ## Alpha.3 — Execution Contract & Capability Resolver
 
 Cette version ajoute :
@@ -79,7 +85,10 @@ Cette version ajoute :
 - statuts d’exécution explicites ;
 - état de travail JSON ;
 - trace JSONL ;
-- Quality Gate structurel.
+- Quality Gate structurel ;
+- nouveaux tests runtime.
+
+Le runtime alpha.3 ne prétend jamais avoir exécuté un outil non branché.
 
 ## Alpha.4 — Host Adapters + Semantic Runtime
 
@@ -91,26 +100,27 @@ Alpha.4 transforme le runtime de planification en moteur sémantique **host-neut
 - injection structurée des Expert Packs dans chaque étape ;
 - chaînage des sorties entre commandes ;
 - `/council` avec avis indépendants, désaccords et arbitrage séparé ;
-- parallélisation contrôlée du conseil ;
+- parallélisation du conseil uniquement pour les hosts déclarés thread-safe ;
+- exécution explicite de `web.search` via adapter avant injection au modèle ;
+- résolution state-aware de `/next`, `/continue`, `/fix`, `/deeper`, `/redo`, `/focus`, `/final` ;
 - Quality Gates sémantiques ;
-- continuité state-aware.
+- adapter déterministe et adapter callable pour intégration/test ;
+- suite de tests portée au-delà de 100 contrôles exécutables.
 
-Voir `docs/HOST_ADAPTERS.md`.
+Voir `docs/HOST_ADAPTERS.md` et `examples/semantic-demo.py`.
 
 ## Alpha.5 — Production Host Integrations
 
-Alpha.5 ajoute la couche nécessaire pour brancher COMMAND OS sur de vrais fournisseurs et outils sans perdre la vérité d’exécution :
+- adapters concrets OpenAI Responses et Anthropic Messages ;
+- wrapper de résilience : retries, circuit breaker, budgets et journal ;
+- approval gates pour effets externes ;
+- Tool Adapters gardés et `tool_requests` explicites ;
+- redaction des secrets ;
+- `--tool=<capability>` ;
+- Evaluation Harness et corpus de régression.
 
-- `OpenAIResponsesAdapter` pour la Responses API ;
-- `AnthropicMessagesAdapter` pour la Messages API ;
-- transport HTTP JSON injectable, donc testable sans réseau ;
-- `ResilientLLMAdapter` avec retry exponentiel, circuit breaker et budgets ;
-- budgets requêtes, tokens, coût et latence ;
-- `GuardedToolAdapter` avec classification des effets externes ;
-- approval gate obligatoire par défaut pour écriture, effet externe, destruction et déploiement production ;
-- `ExecutionJournal` persistant avec redaction des secrets ;
-- `tool_requests` explicites : le modèle peut demander une action, mais seul l’adapter réel peut l’exécuter ;
-- `EvaluationHarness` et corpus d’évaluation ;
-- aucune clé API stockée dans le dépôt.
+Aucune clé API n'est stockée dans le repo. Les adapters lisent les variables d'environnement ou reçoivent la clé explicitement au runtime.
 
-Voir `docs/production-runtime.md`.
+## Beta.1 — API Service + Policy Packs
+
+Beta.1 expose COMMAND OS comme service HTTP et ajoute : RBAC deny-by-default, approval gates avec séparation des tâches, policy packs, registry fournisseurs sans modèle figé, observabilité Prometheus, baseline cross-provider et packaging CLI/API. Voir `docs/BETA1_SERVICE.md`.
