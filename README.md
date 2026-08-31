@@ -35,7 +35,7 @@ Le système doit :
 
 ## Statut
 
-Version actuelle : `2.0.0-alpha.3`
+Version actuelle : `2.0.0-alpha.4`
 
 Le projet est désormais doté d’un parser/runtime, d’un routeur d’experts, d’un Capability Resolver et d’un contrat d’exécution explicite.
 
@@ -59,6 +59,7 @@ Cette version ajoute un prototype exécutable :
 ### Test rapide
 
 ```bash
+cd COMMAND_OS_CORE_v2
 python -m runtime.cli /expert /audit "application de gestion de stock" --forensic --security
 ```
 
@@ -71,7 +72,8 @@ Ou :
 ### Limite volontaire
 
 Le runtime alpha.2 **compile et planifie** les commandes. Il ne branche pas encore
-les outils réels (web, fichiers, GitHub, déploiement, etc.).
+les outils réels (web, fichiers, GitHub, déploiement, etc.). Cela vient dans le
+sprint suivant : `Execution Engine + Capability Resolver`.
 
 ## Alpha.3 — Execution Contract & Capability Resolver
 
@@ -88,6 +90,21 @@ Cette version ajoute :
 
 Le runtime alpha.3 ne prétend jamais avoir exécuté un outil non branché.
 
-## Qualité continue
+## Alpha.4 — Host Adapters + Semantic Runtime
 
-La branche de développement exécute automatiquement les tests runtime et la validation des registres JSON via GitHub Actions.
+Alpha.4 transforme le runtime de planification en moteur sémantique **host-neutral** :
+
+- contrat `LLMAdapter` indépendant du fournisseur ;
+- contrat `ToolAdapter` pour capacités externes réelles ;
+- `run_semantic()` et `SemanticRuntime` ;
+- injection structurée des Expert Packs dans chaque étape ;
+- chaînage des sorties entre commandes ;
+- `/council` avec avis indépendants, désaccords et arbitrage séparé ;
+- parallélisation du conseil uniquement pour les hosts déclarés thread-safe ;
+- exécution explicite de `web.search` via adapter avant injection au modèle ;
+- résolution state-aware de `/next`, `/continue`, `/fix`, `/deeper`, `/redo`, `/focus`, `/final` ;
+- Quality Gates sémantiques ;
+- adapter déterministe et adapter callable pour intégration/test ;
+- suite de tests portée au-delà de 100 contrôles exécutables.
+
+Voir `docs/HOST_ADAPTERS.md` et `examples/semantic-demo.py`.

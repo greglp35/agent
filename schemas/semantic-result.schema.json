@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "COMMAND OS Semantic Result",
+  "type": "object",
+  "required": ["execution_status", "host", "steps", "quality_gate"],
+  "properties": {
+    "execution_status": {
+      "enum": ["EXECUTED", "PARTIALLY_EXECUTED", "BLOCKED", "NOT_AVAILABLE", "SIMULATED"]
+    },
+    "host": {"type": "string"},
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["status"],
+        "properties": {
+          "phase": {"type": ["string", "null"]},
+          "command": {"type": ["string", "null"]},
+          "status": {"type": "string"},
+          "content": {"type": "object"}
+        }
+      }
+    },
+    "quality_gate": {"type": "object"},
+    "final_output": {"type": ["object", "null"]}
+  }
+}
