@@ -1,0 +1,18 @@
+{
+  "schema_version": "2.0",
+  "version": "2.0.0-beta.1",
+  "providers": {
+    "openai": {
+      "adapter": "openai_responses",
+      "api_key_env": "OPENAI_API_KEY",
+      "model_env": "COMMAND_OS_OPENAI_MODEL",
+      "endpoint_env": "COMMAND_OS_OPENAI_ENDPOINT"
+    },
+    "anthropic": {
+      "adapter": "anthropic_messages",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "model_env": "COMMAND_OS_ANTHROPIC_MODEL",
+      "endpoint_env": "COMMAND_OS_ANTHROPIC_ENDPOINT"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "COMMAND OS Policy Pack",
+  "type": "object",
+  "required": [
+    "id",
+    "roles"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "roles": {
+      "type": "object"
+    },
+    "approval_required_effects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "separation_of_duties_effects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

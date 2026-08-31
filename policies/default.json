@@ -1,0 +1,81 @@
+{
+  "schema_version": "2.0",
+  "id": "default",
+  "version": "2.0.0-beta.1",
+  "description": "Default deny-by-default RBAC policy pack for COMMAND OS.",
+  "approval_required_effects": [
+    "write",
+    "external_side_effect",
+    "destructive",
+    "production_deploy"
+  ],
+  "separation_of_duties_effects": [
+    "destructive",
+    "production_deploy"
+  ],
+  "roles": {
+    "viewer": {
+      "capabilities": [
+        "local.compile",
+        "local.state",
+        "local.trace",
+        "web.search",
+        "files.read",
+        "github.read",
+        "calendar.read",
+        "email.read"
+      ],
+      "effects": [
+        "read"
+      ],
+      "can_approve": []
+    },
+    "analyst": {
+      "inherits": [
+        "viewer"
+      ],
+      "capabilities": [
+        "llm.reason"
+      ],
+      "effects": [
+        "read"
+      ],
+      "can_approve": []
+    },
+    "operator": {
+      "inherits": [
+        "analyst"
+      ],
+      "capabilities": [
+        "files.write",
+        "github.write",
+        "email.send",
+        "calendar.write",
+        "deploy.preview"
+      ],
+      "effects": [
+        "read",
+        "write",
+        "external_side_effect"
+      ],
+      "can_approve": [
+        "write",
+        "external_side_effect"
+      ]
+    },
+    "administrator": {
+      "inherits": [
+        "operator"
+      ],
+      "capabilities": [
+        "*"
+      ],
+      "effects": [
+        "*"
+      ],
+      "can_approve": [
+        "*"
+      ]
+    }
+  }
+}

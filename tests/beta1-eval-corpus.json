@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "id": "B001",
+      "input": "/audit mon application",
+      "expect": {
+        "commands": ["audit"]
+      },
+      "semantic": true
+    },
+    {
+      "id": "B002",
+      "input": "/council /decision migrer ou non --deep",
+      "expect": {
+        "commands": ["council","decision"],
+        "depth": "DEEP"
+      },
+      "semantic": true
+    },
+    {
+      "id": "B003",
+      "input": "/research réglementation --web",
+      "expect": {
+        "commands": ["research"]
+      },
+      "semantic": true
+    },
+    {
+      "id": "B004",
+      "input": "/build prototype --forensic",
+      "expect": {
+        "commands": ["build"],
+        "depth": "FORENSIC"
+      },
+      "semantic": true
+    }
+  ]
+}
