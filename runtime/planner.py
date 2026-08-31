@@ -17,52 +17,26 @@ def _stage_type(command: str) -> str:
 def build_execution_plan(ir: Dict[str, Any], routing: Dict[str, Any]) -> Dict[str, Any]:
     steps: List[Dict[str, Any]] = []
     if routing.get("primary") or routing.get("secondary") or routing.get("review"):
-        steps.append({
-            "phase":"ROLE",
-            "action":"route_experts",
-            "details":routing
-        })
+        steps.append({"phase":"ROLE","action":"route_experts","details":routing})
 
-    for idx, stage in enumerate(ir.get("stages", []), start=1):
+    for stage in ir.get("stages", []):
         commands = stage.get("commands", [])
         ordered = commands if ir.get("strict_order") else stage.get("normalized_commands", commands)
         for cmd in ordered:
             steps.append({
-                "phase":_stage_type(cmd),
-                "command":cmd,
+                "phase":_stage_type(cmd),"command":cmd,
                 "target":stage.get("target") or ir.get("target"),
-                "depth":ir.get("depth"),
-                "methods":ir.get("methods", []),
-                "lenses":ir.get("lenses", []),
+                "depth":ir.get("depth"),"methods":ir.get("methods", []),"lenses":ir.get("lenses", []),
+                "output_preferences":ir.get("output_preferences",{}),"profile":ir.get("profile")
             })
 
     quality_checks = []
     command_set = set(ir.get("commands", []))
-    if command_set.intersection({"audit","verify","research","decision","build","debug","test","risk"}):
-        quality_checks.append("truthfulness_and_evidence")
-    if command_set.intersection({"build","automate","debug"}):
-        quality_checks.append("execution_status")
-        quality_checks.append("regression_or_validation")
-    if "council" in command_set:
-        quality_checks.append("independent_views_before_synthesis")
-        quality_checks.append("surface_material_disagreements")
-    if ir.get("depth") == "FORENSIC":
-        quality_checks += [
-            "root_causes",
-            "contradictions",
-            "failure_scenarios",
-            "missing_evidence",
-            "confidence"
-        ]
+    if command_set.intersection({"audit","verify","research","decision","build","debug","test","risk"}): quality_checks.append("truthfulness_and_evidence")
+    if command_set.intersection({"build","automate","debug"}): quality_checks += ["execution_status","regression_or_validation"]
+    if "council" in command_set: quality_checks += ["independent_views_before_synthesis","surface_material_disagreements"]
+    if ir.get("depth") == "FORENSIC": quality_checks += ["root_causes","contradictions","failure_scenarios","missing_evidence","confidence"]
 
-    return {
-        "version":"2.0",
-        "strict_order":ir.get("strict_order", False),
-        "target":ir.get("target"),
-        "steps":steps,
-        "quality_gate":{
-            "required_checks":list(dict.fromkeys(quality_checks)),
-            "priority_scale":["P0","P1","P2","P3"],
-            "execution_status_required":bool(command_set.intersection({"build","automate","debug"}))
-        }
-    }
+    return {"version":"2.0","strict_order":ir.get("strict_order", False),"target":ir.get("target"),"steps":steps,
+        "quality_gate":{"required_checks":list(dict.fromkeys(quality_checks)),"priority_scale":["P0","P1","P2","P3"],
+        "execution_status_required":bool(command_set.intersection({"build","automate","debug"}))}}
