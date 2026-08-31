@@ -31,6 +31,7 @@ jobs:
           with zipfile.ZipFile(archive) as z:
               z.extractall('.')
           shutil.rmtree(bundle)
+          Path('.github/workflows/ci.yml').unlink(missing_ok=True)
           Path('.github/workflows/bootstrap-command-os.yml').unlink()
           Path('TRIGGER.md').unlink(missing_ok=True)
           PY
