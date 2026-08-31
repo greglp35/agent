@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "COMMAND OS Production Policy",
+  "type": "object",
+  "properties": {
+    "retry": {
+      "type": "object"
+    },
+    "budget": {
+      "type": "object"
+    },
+    "approval_required_effects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

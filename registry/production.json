@@ -1,0 +1,32 @@
+{
+  "schema_version": "2.0",
+  "version": "2.0.0-alpha.5",
+  "effects": [
+    "read",
+    "write",
+    "external_side_effect",
+    "destructive",
+    "production_deploy"
+  ],
+  "approval_required_by_default": [
+    "write",
+    "external_side_effect",
+    "destructive",
+    "production_deploy"
+  ],
+  "provider_adapters": {
+    "openai_responses": {
+      "env_key": "OPENAI_API_KEY",
+      "store_default": false
+    },
+    "anthropic_messages": {
+      "env_key": "ANTHROPIC_API_KEY"
+    }
+  },
+  "defaults": {
+    "retry_max_attempts": 3,
+    "circuit_failure_threshold": 5,
+    "circuit_recovery_timeout_s": 30.0,
+    "request_timeout_s": 60.0
+  }
+}
