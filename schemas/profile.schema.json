@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "COMMAND OS Profile",
+  "type": "object",
+  "required": ["schema_version", "id", "version", "label", "defaults", "directives", "command_rules"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]*$"},
+    "version": {"type": "string"},
+    "label": {"type": "string", "minLength": 1},
+    "description": {"type": "string"},
+    "defaults": {
+      "type": "object",
+      "properties": {
+        "depth": {"enum": ["FAST", "STANDARD", "DEEP", "FORENSIC"]},
+        "methods": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "lenses": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "output_preferences": {"type": "object"}
+      },
+      "additionalProperties": true
+    },
+    "directives": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "command_rules": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "depth": {"enum": ["FAST", "STANDARD", "DEEP", "FORENSIC"]},
+          "methods": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "lenses": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "output_preferences": {"type": "object"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

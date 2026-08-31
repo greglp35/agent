@@ -1,13 +1,19 @@
 from __future__ import annotations
 from .registry import load_registries
 from .parser import parse_command_line
+from .profiles import expand_profile_shortcuts, apply_profile
 from .router import route_experts
 from .planner import build_execution_plan
 from .executor import execute_compiled
 
 
 def compile_command(raw: str, source: str = "user"):
-    registries=load_registries(); ir=parse_command_line(raw,registries,source=source)
+    registries=load_registries()
+    expanded=expand_profile_shortcuts(raw,registries.get("profiles",{})) if source=="user" else raw
+    ir=parse_command_line(expanded,registries,source=source)
+    ir["raw_input"]=raw
+    if expanded!=raw: ir["expanded_input"]=expanded
+    apply_profile(ir,registries,original_raw=raw)
     routing=route_experts(ir,registries); ir["routing"]=routing
     return {"ir":ir,"plan":build_execution_plan(ir,routing)}
 
