@@ -1,0 +1,210 @@
+{
+  "schema_version": "2.0",
+  "version": "2.0.0-alpha.2",
+  "modifiers": [
+    {
+      "name": "fast",
+      "category": "depth",
+      "value": "FAST",
+      "exclusive_group": "depth"
+    },
+    {
+      "name": "standard",
+      "category": "depth",
+      "value": "STANDARD",
+      "exclusive_group": "depth"
+    },
+    {
+      "name": "deep",
+      "category": "depth",
+      "value": "DEEP",
+      "exclusive_group": "depth"
+    },
+    {
+      "name": "forensic",
+      "category": "depth",
+      "value": "FORENSIC",
+      "exclusive_group": "depth"
+    },
+    {
+      "name": "expert",
+      "category": "posture",
+      "effect": "niveau senior du domaine"
+    },
+    {
+      "name": "beginner",
+      "category": "audience",
+      "effect": "explication accessible sans baisser la rigueur"
+    },
+    {
+      "name": "terrain",
+      "category": "lens",
+      "effect": "priorité faisabilité opérationnelle"
+    },
+    {
+      "name": "strategic",
+      "category": "lens",
+      "effect": "vision direction et long terme"
+    },
+    {
+      "name": "critical",
+      "category": "posture",
+      "effect": "chercher activement faiblesses et contre-arguments"
+    },
+    {
+      "name": "creative",
+      "category": "posture",
+      "effect": "augmenter exploration divergente"
+    },
+    {
+      "name": "sources",
+      "category": "evidence",
+      "effect": "exiger sources lorsque disponibles"
+    },
+    {
+      "name": "web",
+      "category": "tool_intent",
+      "effect": "utiliser le web si disponible et pertinent"
+    },
+    {
+      "name": "current",
+      "category": "evidence",
+      "effect": "privilégier les informations actuelles"
+    },
+    {
+      "name": "confidence",
+      "category": "output",
+      "effect": "indiquer niveau de confiance justifié"
+    },
+    {
+      "name": "safe",
+      "category": "lens",
+      "effect": "priorité risque, sécurité et conformité"
+    },
+    {
+      "name": "security",
+      "category": "lens",
+      "effect": "cybersécurité, permissions, secrets, menaces"
+    },
+    {
+      "name": "ux",
+      "category": "lens",
+      "effect": "ergonomie, accessibilité, parcours et charge cognitive"
+    },
+    {
+      "name": "architecture",
+      "category": "lens",
+      "effect": "structure, composants, dépendances et maintenabilité"
+    },
+    {
+      "name": "performance",
+      "category": "lens",
+      "effect": "latence, débit, ressources, scalabilité"
+    },
+    {
+      "name": "seo",
+      "category": "lens",
+      "effect": "SEO technique, contenu, intention et concurrence"
+    },
+    {
+      "name": "compliance",
+      "category": "lens",
+      "effect": "conformité et obligations applicables"
+    },
+    {
+      "name": "table",
+      "category": "output",
+      "effect": "privilégier une sortie tabulaire"
+    },
+    {
+      "name": "checklist",
+      "category": "output",
+      "effect": "sortie directement exécutable"
+    },
+    {
+      "name": "actions",
+      "category": "output",
+      "effect": "terminer par actions concrètes"
+    },
+    {
+      "name": "executive",
+      "category": "output",
+      "effect": "synthèse décisionnelle direction"
+    },
+    {
+      "name": "json",
+      "category": "output",
+      "effect": "sortie structurée machine-readable"
+    },
+    {
+      "name": "examples",
+      "category": "output",
+      "effect": "inclure exemples représentatifs"
+    },
+    {
+      "name": "no-fluff",
+      "category": "output",
+      "effect": "supprimer le texte non essentiel"
+    },
+    {
+      "name": "role",
+      "category": "routing",
+      "expects_value": true
+    },
+    {
+      "name": "profile",
+      "category": "routing",
+      "expects_value": true
+    },
+    {
+      "name": "lens",
+      "category": "routing",
+      "expects_value": true
+    },
+    {
+      "name": "focus",
+      "category": "routing",
+      "expects_value": true
+    },
+    {
+      "name": "human",
+      "category": "style",
+      "effect": "rendre le texte naturel, fluide et non robotique"
+    },
+    {
+      "name": "mode",
+      "category": "presentation",
+      "expects_value": true
+    },
+    {
+      "name": "cta",
+      "category": "content",
+      "effect": "inclure un appel à l’action explicite"
+    },
+    {
+      "name": "viral",
+      "category": "content",
+      "effect": "optimiser l’accroche et la partageabilité sans sacrifier la véracité"
+    },
+    {
+      "name": "hook",
+      "category": "content",
+      "effect": "travailler prioritairement l’accroche"
+    },
+    {
+      "name": "brand-story",
+      "category": "content",
+      "effect": "structurer le contenu comme un récit de marque"
+    },
+    {
+      "name": "persuasive",
+      "category": "content",
+      "effect": "augmenter la force persuasive sans manipuler ni inventer de preuves"
+    },
+    {
+      "name": "social",
+      "category": "content",
+      "effect": "adapter au format social media"
+    }
+  ]
+}

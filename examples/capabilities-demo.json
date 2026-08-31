@@ -1,0 +1,10 @@
+{
+  "llm.reason": true,
+  "web.search": true,
+  "files.read": true,
+  "files.write": true,
+  "github.read": false,
+  "github.write": false,
+  "deploy.preview": false,
+  "deploy.production": false
+}

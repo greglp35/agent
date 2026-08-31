@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "COMMAND OS Work State",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "active_project": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "current_task": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "current_stage": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "last_artifact": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "next_action": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "updated_at": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  }
+}

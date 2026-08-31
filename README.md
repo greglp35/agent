@@ -39,6 +39,7 @@ Version actuelle : `2.0.0-alpha.3`
 
 Le projet est désormais doté d’un parser/runtime, d’un routeur d’experts, d’un Capability Resolver et d’un contrat d’exécution explicite.
 
+
 ## Alpha.2 — Parser Runtime
 
 Cette version ajoute un prototype exécutable :
@@ -68,6 +69,13 @@ Ou :
 ```bash
 ./command-os /council /audit /decision "mon application" --forensic --security --terrain
 ```
+
+### Limite volontaire
+
+Le runtime alpha.2 **compile et planifie** les commandes. Il ne branche pas encore
+les outils réels (web, fichiers, GitHub, déploiement, etc.). Cela vient dans le
+sprint suivant : `Execution Engine + Capability Resolver`.
+
 
 ## Alpha.3 — Execution Contract & Capability Resolver
 

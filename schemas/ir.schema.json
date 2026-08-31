@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://command-os.local/schemas/ir.schema.json",
+  "title": "COMMAND OS Intermediate Representation",
+  "type": "object",
+  "required": [
+    "version",
+    "raw",
+    "strict_order",
+    "stages",
+    "depth",
+    "methods",
+    "lenses",
+    "diagnostics"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "raw": {
+      "type": "string"
+    },
+    "strict_order": {
+      "type": "boolean"
+    },
+    "macro": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "depth": {
+      "enum": [
+        "FAST",
+        "STANDARD",
+        "DEEP",
+        "FORENSIC"
+      ]
+    },
+    "commands": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "normalized_commands": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "methods": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lenses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tool_intents": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "output_preferences": {
+      "type": "object"
+    },
+    "routing": {
+      "type": "object"
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "commands",
+          "target"
+        ],
+        "properties": {
+          "commands": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "normalized_commands": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "target": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "level",
+          "code",
+          "message"
+        ],
+        "properties": {
+          "level": {
+            "enum": [
+              "ERROR",
+              "WARNING",
+              "INFO"
+            ]
+          },
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

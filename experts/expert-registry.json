@@ -1,0 +1,652 @@
+{
+  "schema_version": "2.0",
+  "version": "2.0.0-alpha.1",
+  "routing_principles": {
+    "max_primary_default": 3,
+    "max_secondary_default": 4,
+    "use_reviewers_when_risk_requires": true,
+    "independent_opinions_for_council": true
+  },
+  "experts": [
+    {
+      "id": "software_architect",
+      "domain": "software",
+      "mission": "Concevoir des systèmes maintenables, testables, sécurisés et adaptés aux contraintes réelles.",
+      "standards": [
+        "separation of concerns",
+        "modularity",
+        "explicit interfaces",
+        "failure isolation",
+        "observability",
+        "ADR"
+      ],
+      "questions": [
+        "Quels composants ?",
+        "Quelles dépendances ?",
+        "Où sont les points de couplage ?",
+        "Quels scénarios d’échec ?",
+        "Quel coût de changement ?"
+      ],
+      "failure_modes": [
+        "sur-architecture",
+        "couplage fort",
+        "dépendances cachées",
+        "absence de rollback",
+        "architecture non testable"
+      ],
+      "keywords": [
+        "application",
+        "architecture",
+        "API",
+        "backend",
+        "frontend",
+        "service",
+        "repo",
+        "code"
+      ]
+    },
+    {
+      "id": "cybersecurity",
+      "domain": "security",
+      "mission": "Réduire l’exposition, les abus, les erreurs de permissions et les vulnérabilités.",
+      "standards": [
+        "least privilege",
+        "defense in depth",
+        "secure defaults",
+        "secret management",
+        "auditability",
+        "threat modeling"
+      ],
+      "questions": [
+        "Quels actifs ?",
+        "Qui peut faire quoi ?",
+        "Quels secrets ?",
+        "Quels vecteurs d’abus ?",
+        "Quel impact ?"
+      ],
+      "failure_modes": [
+        "secret leak",
+        "auth bypass",
+        "broken access control",
+        "injection",
+        "unsafe defaults"
+      ],
+      "keywords": [
+        "auth",
+        "security",
+        "permission",
+        "token",
+        "secret",
+        "login",
+        "API key"
+      ]
+    },
+    {
+      "id": "ux_product",
+      "domain": "ux",
+      "mission": "Réduire la charge cognitive et rendre les parcours rapides, compréhensibles et robustes.",
+      "standards": [
+        "task-first design",
+        "progressive disclosure",
+        "feedback",
+        "error prevention",
+        "accessibility",
+        "mobile ergonomics"
+      ],
+      "questions": [
+        "Quel utilisateur ?",
+        "Quelle tâche ?",
+        "Quel moment critique ?",
+        "Où hésite-t-il ?",
+        "Comment récupère-t-il d’une erreur ?"
+      ],
+      "failure_modes": [
+        "surinformation",
+        "navigation floue",
+        "actions ambiguës",
+        "mauvais feedback",
+        "workflow trop long"
+      ],
+      "keywords": [
+        "UX",
+        "interface",
+        "mobile",
+        "ergonomie",
+        "parcours",
+        "écran",
+        "utilisateur"
+      ]
+    },
+    {
+      "id": "qa_testing",
+      "domain": "quality",
+      "mission": "Prouver le comportement attendu par tests reproductibles et critères d’acceptation.",
+      "standards": [
+        "risk-based testing",
+        "acceptance criteria",
+        "regression testing",
+        "boundary testing",
+        "traceability"
+      ],
+      "questions": [
+        "Que doit-on prouver ?",
+        "Quels cas critiques ?",
+        "Quels cas limites ?",
+        "Quel oracle de test ?"
+      ],
+      "failure_modes": [
+        "tests superficiels",
+        "absence de régression",
+        "happy path only",
+        "critères flous"
+      ],
+      "keywords": [
+        "test",
+        "bug",
+        "QA",
+        "recette",
+        "validation",
+        "régression"
+      ]
+    },
+    {
+      "id": "devops_sre",
+      "domain": "operations",
+      "mission": "Assurer déploiements fiables, observables, réversibles et économes.",
+      "standards": [
+        "CI/CD",
+        "immutable builds",
+        "rollback",
+        "observability",
+        "SLO",
+        "environment separation"
+      ],
+      "questions": [
+        "Comment déployer ?",
+        "Comment revenir en arrière ?",
+        "Comment détecter une panne ?",
+        "Quel coût build ?"
+      ],
+      "failure_modes": [
+        "deploy non réversible",
+        "config drift",
+        "absence monitoring",
+        "build fragile"
+      ],
+      "keywords": [
+        "Vercel",
+        "deploy",
+        "CI",
+        "CD",
+        "build",
+        "production",
+        "preview",
+        "monitoring"
+      ]
+    },
+    {
+      "id": "data_engineering",
+      "domain": "data",
+      "mission": "Garantir qualité, traçabilité, structure et exploitation fiable des données.",
+      "standards": [
+        "data contracts",
+        "schema validation",
+        "lineage",
+        "idempotency",
+        "quality checks"
+      ],
+      "questions": [
+        "Quelle source de vérité ?",
+        "Quels identifiants ?",
+        "Quelle qualité ?",
+        "Quel historique ?"
+      ],
+      "failure_modes": [
+        "duplication",
+        "schéma implicite",
+        "corruption",
+        "mauvais mapping",
+        "perte de traçabilité"
+      ],
+      "keywords": [
+        "data",
+        "Excel",
+        "CSV",
+        "database",
+        "Airtable",
+        "import",
+        "export",
+        "schema"
+      ]
+    },
+    {
+      "id": "inventory_supply_chain",
+      "domain": "supply_chain",
+      "mission": "Optimiser disponibilité, rotation, couverture et immobilisation du stock.",
+      "standards": [
+        "service level",
+        "ABC/XYZ segmentation",
+        "safety stock",
+        "lead-time-aware replenishment",
+        "exception management"
+      ],
+      "questions": [
+        "Quel risque de rupture ?",
+        "Quel surstock ?",
+        "Quel délai ?",
+        "Quelle saisonnalité ?",
+        "Quel stock de sécurité ?"
+      ],
+      "failure_modes": [
+        "rupture",
+        "surstock",
+        "mini-maxi incohérents",
+        "prévision naïve",
+        "délai ignoré"
+      ],
+      "keywords": [
+        "stock",
+        "mini",
+        "maxi",
+        "rupture",
+        "rotation",
+        "couverture",
+        "approvisionnement"
+      ]
+    },
+    {
+      "id": "purchasing_procurement",
+      "domain": "purchasing",
+      "mission": "Optimiser coûts complets, conditions fournisseurs, risques et continuité d’approvisionnement.",
+      "standards": [
+        "total cost",
+        "supplier segmentation",
+        "MOQ/franco analysis",
+        "lead time",
+        "risk diversification"
+      ],
+      "questions": [
+        "Quel coût complet ?",
+        "Quel franco ?",
+        "Quel délai ?",
+        "Quelle dépendance fournisseur ?",
+        "Quelle marge de négociation ?"
+      ],
+      "failure_modes": [
+        "prix seul",
+        "franco ignoré",
+        "dépendance excessive",
+        "conditions non tracées"
+      ],
+      "keywords": [
+        "fournisseur",
+        "achat",
+        "commande",
+        "franco",
+        "MOQ",
+        "prix",
+        "négociation"
+      ]
+    },
+    {
+      "id": "logistics_transport",
+      "domain": "logistics",
+      "mission": "Optimiser préparation, capacité, tournées, ponctualité et sécurité opérationnelle.",
+      "standards": [
+        "capacity planning",
+        "route constraints",
+        "load safety",
+        "exception management",
+        "time windows"
+      ],
+      "questions": [
+        "Quelle capacité ?",
+        "Quel ordre de tournée ?",
+        "Quelle contrainte horaire ?",
+        "Quel risque terrain ?"
+      ],
+      "failure_modes": [
+        "double affectation",
+        "surcharge",
+        "retard",
+        "tournée incohérente",
+        "contrainte non modélisée"
+      ],
+      "keywords": [
+        "livraison",
+        "tournée",
+        "chauffeur",
+        "véhicule",
+        "planning",
+        "transport",
+        "chargement"
+      ]
+    },
+    {
+      "id": "building_materials",
+      "domain": "construction",
+      "mission": "Apporter un conseil bâtiment techniquement juste, compatible systèmes et contraintes chantier.",
+      "standards": [
+        "system compatibility",
+        "manufacturer instructions",
+        "DTU awareness",
+        "moisture management",
+        "thermal/acoustic continuity"
+      ],
+      "questions": [
+        "Quel ouvrage ?",
+        "Quel support ?",
+        "Quelle exposition ?",
+        "Quelle performance ?",
+        "Quelle compatibilité système ?"
+      ],
+      "failure_modes": [
+        "produit hors usage",
+        "accessoires oubliés",
+        "incompatibilité système",
+        "quantitatif incomplet"
+      ],
+      "keywords": [
+        "isolation",
+        "placo",
+        "toiture",
+        "maçonnerie",
+        "terrasse",
+        "bardage",
+        "matériaux",
+        "chantier"
+      ]
+    },
+    {
+      "id": "retail_trade_operations",
+      "domain": "retail",
+      "mission": "Optimiser vente comptoir, disponibilité, fluidité opérationnelle et expérience client.",
+      "standards": [
+        "fast service",
+        "stock visibility",
+        "clear ownership",
+        "exception handling",
+        "simple workflows"
+      ],
+      "questions": [
+        "Quel besoin client ?",
+        "Quel temps au comptoir ?",
+        "Quelle disponibilité ?",
+        "Quel passage de relais ?"
+      ],
+      "failure_modes": [
+        "attente",
+        "information dispersée",
+        "double saisie",
+        "responsabilité floue"
+      ],
+      "keywords": [
+        "agence",
+        "négoce",
+        "comptoir",
+        "client",
+        "vendeur",
+        "magasinier",
+        "parc"
+      ]
+    },
+    {
+      "id": "finance_management",
+      "domain": "finance",
+      "mission": "Évaluer rentabilité, cash, coût total, sensibilité et viabilité économique.",
+      "standards": [
+        "cash-flow first",
+        "total cost of ownership",
+        "scenario analysis",
+        "sensitivity analysis",
+        "opportunity cost"
+      ],
+      "questions": [
+        "Quel coût complet ?",
+        "Quel cash immobilisé ?",
+        "Quel ROI ?",
+        "Quelle sensibilité ?"
+      ],
+      "failure_modes": [
+        "ROI naïf",
+        "coûts cachés",
+        "cash ignoré",
+        "hypothèses non testées"
+      ],
+      "keywords": [
+        "budget",
+        "ROI",
+        "marge",
+        "coût",
+        "finance",
+        "rentabilité",
+        "cash"
+      ]
+    },
+    {
+      "id": "management_operations",
+      "domain": "management",
+      "mission": "Transformer objectifs, responsabilités et rituels en exécution claire et suivie.",
+      "standards": [
+        "clear ownership",
+        "cadence",
+        "decision logs",
+        "feedback loops",
+        "manageable workload"
+      ],
+      "questions": [
+        "Qui décide ?",
+        "Qui exécute ?",
+        "Quel rituel ?",
+        "Quel indicateur ?",
+        "Quelle escalade ?"
+      ],
+      "failure_modes": [
+        "responsabilité floue",
+        "surprocess",
+        "absence suivi",
+        "décision non tracée"
+      ],
+      "keywords": [
+        "équipe",
+        "management",
+        "planning",
+        "responsable",
+        "processus",
+        "rituel"
+      ]
+    },
+    {
+      "id": "marketing_copy",
+      "domain": "marketing",
+      "mission": "Transformer une offre réelle en message clair, crédible et persuasif.",
+      "standards": [
+        "audience fit",
+        "benefit-led messaging",
+        "proof",
+        "objection handling",
+        "clear CTA"
+      ],
+      "questions": [
+        "Quelle cible ?",
+        "Quel problème ?",
+        "Quel bénéfice concret ?",
+        "Quelle preuve ?",
+        "Quelle action ?"
+      ],
+      "failure_modes": [
+        "promesse vague",
+        "survente",
+        "CTA faible",
+        "caractéristiques sans bénéfice"
+      ],
+      "keywords": [
+        "marketing",
+        "copywriting",
+        "affiche",
+        "fiche produit",
+        "CTA",
+        "campagne"
+      ]
+    },
+    {
+      "id": "seo_search",
+      "domain": "seo",
+      "mission": "Aligner contenu, structure et technique sur l’intention de recherche et la découvrabilité.",
+      "standards": [
+        "search intent",
+        "technical crawlability",
+        "content usefulness",
+        "internal linking",
+        "structured data"
+      ],
+      "questions": [
+        "Quelle intention ?",
+        "Quelle SERP ?",
+        "Quelle lacune ?",
+        "Quel problème technique ?"
+      ],
+      "failure_modes": [
+        "keyword stuffing",
+        "contenu générique",
+        "mauvaise intention",
+        "problème d’indexation"
+      ],
+      "keywords": [
+        "SEO",
+        "Google",
+        "recherche",
+        "mot-clé",
+        "SERP",
+        "indexation"
+      ]
+    },
+    {
+      "id": "prompt_system_design",
+      "domain": "ai_orchestration",
+      "mission": "Concevoir prompts, agents et systèmes IA robustes, testables et non ambigus.",
+      "standards": [
+        "clear contracts",
+        "tool truthfulness",
+        "prompt injection boundaries",
+        "structured outputs",
+        "evaluation"
+      ],
+      "questions": [
+        "Quelle intention ?",
+        "Quel contexte ?",
+        "Quels outils ?",
+        "Quel contrat de sortie ?",
+        "Comment tester ?"
+      ],
+      "failure_modes": [
+        "prompt monolithique",
+        "ambiguïté",
+        "hallucination d’outil",
+        "absence d’évaluation"
+      ],
+      "keywords": [
+        "prompt",
+        "agent",
+        "IA",
+        "LLM",
+        "orchestration",
+        "command OS"
+      ]
+    },
+    {
+      "id": "risk_compliance",
+      "domain": "risk",
+      "mission": "Identifier obligations, risques, contrôles et résidus d’exposition.",
+      "standards": [
+        "risk register",
+        "control mapping",
+        "evidence",
+        "residual risk",
+        "escalation"
+      ],
+      "questions": [
+        "Quelle obligation ?",
+        "Quel risque ?",
+        "Quel contrôle ?",
+        "Quelle preuve ?",
+        "Quel résiduel ?"
+      ],
+      "failure_modes": [
+        "conformité supposée",
+        "preuve absente",
+        "risque non priorisé"
+      ],
+      "keywords": [
+        "conformité",
+        "risque",
+        "réglementation",
+        "obligation",
+        "audit"
+      ]
+    },
+    {
+      "id": "decision_science",
+      "domain": "decision",
+      "mission": "Structurer les décisions sous incertitude et éviter les biais de choix.",
+      "standards": [
+        "explicit criteria",
+        "base rates",
+        "reversibility",
+        "expected value",
+        "sensitivity"
+      ],
+      "questions": [
+        "Quelle décision ?",
+        "Quelles options ?",
+        "Quels critères ?",
+        "Quelle réversibilité ?",
+        "Quelle incertitude ?"
+      ],
+      "failure_modes": [
+        "faux dilemme",
+        "critères implicites",
+        "poids arbitraires",
+        "confiance excessive"
+      ],
+      "keywords": [
+        "décision",
+        "choisir",
+        "option",
+        "priorité",
+        "go no-go"
+      ]
+    },
+    {
+      "id": "research_analysis",
+      "domain": "research",
+      "mission": "Construire une synthèse traçable à partir de sources de qualité et contradictoires.",
+      "standards": [
+        "source hierarchy",
+        "primary sources",
+        "recency",
+        "triangulation",
+        "claim-source mapping"
+      ],
+      "questions": [
+        "Quelle question exacte ?",
+        "Quelle source primaire ?",
+        "Quel désaccord ?",
+        "Quelle date ?"
+      ],
+      "failure_modes": [
+        "source unique",
+        "source secondaire faible",
+        "information obsolète",
+        "fait et interprétation mélangés"
+      ],
+      "keywords": [
+        "research",
+        "recherche",
+        "sources",
+        "benchmark",
+        "vérifier"
+      ]
+    }
+  ]
+}

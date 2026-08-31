@@ -1,0 +1,200 @@
+{
+  "schema_version": "2.0",
+  "version": "2.0.0-alpha.1",
+  "methods": [
+    {
+      "name": "rootcause",
+      "mission": "Distinguer symptômes et causes racines.",
+      "steps": [
+        "collect_symptoms",
+        "build_causal_chain",
+        "test_causes",
+        "identify_root_causes"
+      ]
+    },
+    {
+      "name": "assumptions",
+      "mission": "Lister et classer les hypothèses implicites.",
+      "steps": [
+        "extract_assumptions",
+        "classify",
+        "test_criticality"
+      ]
+    },
+    {
+      "name": "falsify",
+      "mission": "Chercher les observations qui réfuteraient la conclusion.",
+      "steps": [
+        "state_claim",
+        "define_falsifiers",
+        "search_counterevidence",
+        "update_confidence"
+      ]
+    },
+    {
+      "name": "bias",
+      "mission": "Rechercher les biais cognitifs et de sélection de preuves.",
+      "steps": [
+        "detect_confirmation_bias",
+        "detect_selection_bias",
+        "detect_false_dilemma",
+        "detect_motivated_reasoning",
+        "detect_causality_errors"
+      ]
+    },
+    {
+      "name": "devil",
+      "mission": "Construire la meilleure argumentation adverse possible.",
+      "steps": [
+        "steelman_opposition",
+        "attack_evidence",
+        "attack_assumptions",
+        "attack_tradeoffs"
+      ]
+    },
+    {
+      "name": "counterfactual",
+      "mission": "Tester ce qui changerait si une hypothèse clé était fausse.",
+      "steps": [
+        "select_key_assumption",
+        "invert",
+        "recompute_outcomes"
+      ]
+    },
+    {
+      "name": "second-order",
+      "mission": "Analyser les conséquences indirectes et différées.",
+      "steps": [
+        "first_order",
+        "second_order",
+        "feedback_loops",
+        "unintended_consequences"
+      ]
+    },
+    {
+      "name": "premortem",
+      "mission": "Supposer l’échec futur et identifier les causes plausibles.",
+      "steps": [
+        "assume_failure",
+        "generate_causes",
+        "rank_causes",
+        "design_preventions"
+      ]
+    },
+    {
+      "name": "edge-cases",
+      "mission": "Chercher les cas limites, entrées atypiques et situations extrêmes.",
+      "steps": [
+        "define_normal_case",
+        "enumerate_boundaries",
+        "stress_assumptions"
+      ]
+    },
+    {
+      "name": "tradeoffs",
+      "mission": "Rendre explicites les compromis entre options.",
+      "steps": [
+        "define_axes",
+        "compare_losses_gains",
+        "identify_non_dominated_options"
+      ]
+    },
+    {
+      "name": "constraints",
+      "mission": "Identifier les contraintes dures, souples et cachées.",
+      "steps": [
+        "hard_constraints",
+        "soft_constraints",
+        "hidden_constraints",
+        "conflicts"
+      ]
+    },
+    {
+      "name": "scenario",
+      "mission": "Construire plusieurs scénarios cohérents.",
+      "steps": [
+        "drivers",
+        "base_case",
+        "upside",
+        "downside",
+        "triggers"
+      ]
+    },
+    {
+      "name": "evidence",
+      "mission": "Associer chaque conclusion importante à son niveau de preuve.",
+      "steps": [
+        "classify_fact_inference_assumption_unknown",
+        "map_evidence",
+        "flag_gaps"
+      ]
+    },
+    {
+      "name": "confidence",
+      "mission": "Exprimer une confiance qualitative justifiée.",
+      "steps": [
+        "estimate_evidence_quality",
+        "estimate_model_uncertainty",
+        "state_confidence_and_reason"
+      ]
+    },
+    {
+      "name": "reversibility",
+      "mission": "Évaluer le coût de retour arrière d’une décision.",
+      "steps": [
+        "identify_lock_in",
+        "rollback_path",
+        "switching_cost",
+        "decision_type"
+      ]
+    },
+    {
+      "name": "sensitivity",
+      "mission": "Tester la robustesse d’une conclusion aux variations des hypothèses.",
+      "steps": [
+        "identify_sensitive_inputs",
+        "vary_inputs",
+        "observe_decision_changes"
+      ]
+    },
+    {
+      "name": "failure-modes",
+      "mission": "Identifier les modes de défaillance plausibles et leurs effets.",
+      "steps": [
+        "enumerate_failures",
+        "severity",
+        "detectability",
+        "controls"
+      ]
+    },
+    {
+      "name": "opportunity-cost",
+      "mission": "Identifier ce qui est sacrifié en choisissant une option.",
+      "steps": [
+        "identify_alternatives",
+        "estimate_foregone_value",
+        "compare"
+      ]
+    },
+    {
+      "name": "dependency-map",
+      "mission": "Cartographier les dépendances critiques.",
+      "steps": [
+        "components",
+        "dependencies",
+        "single_points_of_failure",
+        "critical_path"
+      ]
+    },
+    {
+      "name": "decision-tree",
+      "mission": "Structurer une décision selon conditions et branches.",
+      "steps": [
+        "decision_nodes",
+        "conditions",
+        "branches",
+        "outcomes"
+      ]
+    }
+  ]
+}

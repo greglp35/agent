@@ -1,0 +1,582 @@
+{
+  "schema_version": "2.0",
+  "version": "2.0.0-alpha.1",
+  "commands": [
+    {
+      "name": "audit",
+      "class": "operation",
+      "default_depth": "STANDARD",
+      "mission": "Inspecter systématiquement un existant pour détecter défauts, risques, dettes, incohérences, manques et opportunités.",
+      "default_output": [
+        "verdict",
+        "findings",
+        "risks",
+        "priorities",
+        "recommendations",
+        "actions"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "verify",
+      "class": "acquisition",
+      "default_depth": "STANDARD",
+      "mission": "Tester une affirmation, une conclusion ou un résultat contre les preuves disponibles.",
+      "default_output": [
+        "verdict",
+        "evidence",
+        "counter_evidence",
+        "uncertainty",
+        "confidence"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "redteam",
+      "class": "reasoning",
+      "default_depth": "DEEP",
+      "mission": "Chercher volontairement comment un système, un plan ou une hypothèse peut échouer.",
+      "default_output": [
+        "attack_surface",
+        "failure_scenarios",
+        "severity",
+        "mitigations"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "deepthink",
+      "class": "reasoning",
+      "default_depth": "DEEP",
+      "mission": "Augmenter la profondeur d’analyse par hypothèses, causes, objections, alternatives et effets de second ordre.",
+      "default_output": [
+        "assumptions",
+        "reasoning_tests",
+        "blind_spots",
+        "alternatives",
+        "consequences"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "challenge",
+      "class": "reasoning",
+      "default_depth": "DEEP",
+      "mission": "Construire les objections les plus solides contre une idée ou une conclusion.",
+      "default_output": [
+        "thesis",
+        "weak_assumptions",
+        "objections",
+        "rebuttals",
+        "verdict"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "expert",
+      "class": "role_router",
+      "default_depth": "STANDARD",
+      "mission": "Détecter automatiquement les domaines et activer les expertises pertinentes.",
+      "default_output": [
+        "selected_experts",
+        "standards",
+        "domain_constraints"
+      ],
+      "requires_target": false,
+      "quality_gate": true
+    },
+    {
+      "name": "council",
+      "class": "role_router",
+      "default_depth": "DEEP",
+      "mission": "Constituer plusieurs experts indépendants, exposer leurs désaccords puis arbitrer.",
+      "default_output": [
+        "independent_views",
+        "disagreements",
+        "arbitration",
+        "synthesis"
+      ],
+      "requires_target": false,
+      "quality_gate": true
+    },
+    {
+      "name": "teach",
+      "class": "presentation",
+      "default_depth": "STANDARD",
+      "mission": "Expliquer progressivement comme un excellent professeur et praticien.",
+      "default_output": [
+        "concepts",
+        "examples",
+        "mistakes",
+        "exercises",
+        "corrections"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "decision",
+      "class": "operation",
+      "default_depth": "DEEP",
+      "mission": "Transformer une situation complexe en décision argumentée.",
+      "default_output": [
+        "options",
+        "criteria",
+        "tradeoffs",
+        "risks",
+        "recommendation",
+        "conditions"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "compare",
+      "class": "operation",
+      "default_depth": "STANDARD",
+      "mission": "Comparer plusieurs solutions sur une grille commune et explicite.",
+      "default_output": [
+        "criteria_matrix",
+        "tradeoffs",
+        "context_winner"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "prioritize",
+      "class": "operation",
+      "default_depth": "STANDARD",
+      "mission": "Transformer une liste en ordre d’action selon impact, urgence, effort, risque et dépendances.",
+      "default_output": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "dependencies",
+        "order"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "strategy",
+      "class": "operation",
+      "default_depth": "DEEP",
+      "mission": "Définir une stratégie cohérente avec objectifs, contraintes, choix, renoncements et indicateurs.",
+      "default_output": [
+        "position",
+        "choices",
+        "non_choices",
+        "levers",
+        "roadmap",
+        "metrics"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "forecast",
+      "class": "operation",
+      "default_depth": "DEEP",
+      "mission": "Construire des scénarios futurs plausibles avec déclencheurs et incertitudes.",
+      "default_output": [
+        "drivers",
+        "scenarios",
+        "triggers",
+        "confidence"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "research",
+      "class": "acquisition",
+      "default_depth": "DEEP",
+      "mission": "Effectuer une recherche structurée en séparant faits, sources, interprétations et inconnues.",
+      "default_output": [
+        "facts",
+        "sources",
+        "contradictions",
+        "unknowns",
+        "synthesis"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "benchmark",
+      "class": "acquisition",
+      "default_depth": "STANDARD",
+      "mission": "Comparer à des références, standards ou concurrents pertinents.",
+      "default_output": [
+        "reference_set",
+        "gaps",
+        "transferable_practices"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "data",
+      "class": "acquisition",
+      "default_depth": "STANDARD",
+      "mission": "Analyser des données, leur qualité, leurs tendances et anomalies.",
+      "default_output": [
+        "quality",
+        "metrics",
+        "segments",
+        "trends",
+        "anomalies",
+        "insights"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "spec",
+      "class": "operation",
+      "default_depth": "STANDARD",
+      "mission": "Transformer un besoin flou en spécification exploitable et testable.",
+      "default_output": [
+        "scope",
+        "requirements",
+        "constraints",
+        "acceptance_criteria",
+        "non_goals"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "architect",
+      "class": "operation",
+      "default_depth": "DEEP",
+      "mission": "Concevoir structure, composants, flux, dépendances et décisions avant construction.",
+      "default_output": [
+        "architecture",
+        "components",
+        "flows",
+        "dependencies",
+        "ADRs",
+        "risks"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "build",
+      "class": "execution",
+      "default_depth": "STANDARD",
+      "mission": "Passer de la conception à une réalisation concrète avec les capacités réellement disponibles.",
+      "default_output": [
+        "artifacts",
+        "execution_status",
+        "tests",
+        "remaining_work"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "debug",
+      "class": "operation",
+      "default_depth": "DEEP",
+      "mission": "Reproduire, isoler et corriger la cause d’un dysfonctionnement concret.",
+      "default_output": [
+        "reproduction",
+        "root_cause",
+        "fix",
+        "regression_tests"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "test",
+      "class": "operation",
+      "default_depth": "STANDARD",
+      "mission": "Définir ou exécuter les contrôles nécessaires pour prouver qu’un résultat fonctionne.",
+      "default_output": [
+        "test_plan",
+        "cases",
+        "results",
+        "failures",
+        "coverage"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "simulate",
+      "class": "operation",
+      "default_depth": "DEEP",
+      "mission": "Explorer plusieurs scénarios et conséquences avant action réelle.",
+      "default_output": [
+        "scenarios",
+        "assumptions",
+        "outcomes",
+        "sensitivities"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "experiment",
+      "class": "operation",
+      "default_depth": "DEEP",
+      "mission": "Concevoir une expérience capable de départager plusieurs hypothèses.",
+      "default_output": [
+        "hypotheses",
+        "protocol",
+        "metrics",
+        "stopping_rule",
+        "interpretation"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "measure",
+      "class": "operation",
+      "default_depth": "STANDARD",
+      "mission": "Définir KPI, métriques, seuils et instrumentation pour mesurer objectivement.",
+      "default_output": [
+        "metrics",
+        "baselines",
+        "targets",
+        "thresholds",
+        "instrumentation"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "risk",
+      "class": "operation",
+      "default_depth": "DEEP",
+      "mission": "Analyser exposition, probabilité, impact, contrôles et risque résiduel.",
+      "default_output": [
+        "risk_register",
+        "probability",
+        "impact",
+        "mitigations",
+        "residual_risk"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "plan",
+      "class": "operation",
+      "default_depth": "STANDARD",
+      "mission": "Transformer un objectif en plan d’exécution concret et séquencé.",
+      "default_output": [
+        "steps",
+        "dependencies",
+        "resources",
+        "validation",
+        "next_action"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "automate",
+      "class": "execution",
+      "default_depth": "STANDARD",
+      "mission": "Concevoir ou implémenter une automatisation avec déclencheurs, règles, exceptions et contrôles.",
+      "default_output": [
+        "workflow",
+        "triggers",
+        "rules",
+        "exceptions",
+        "controls",
+        "execution_status"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "ideate",
+      "class": "operation",
+      "default_depth": "STANDARD",
+      "mission": "Générer largement des idées puis sélectionner les meilleures selon les contraintes.",
+      "default_output": [
+        "ideas",
+        "clusters",
+        "filters",
+        "shortlist"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "write",
+      "class": "presentation",
+      "default_depth": "STANDARD",
+      "mission": "Créer ou réécrire un contenu fonctionnel selon objectif, cible, ton et format.",
+      "default_output": [
+        "final_text"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "copywriter",
+      "class": "presentation",
+      "default_depth": "STANDARD",
+      "mission": "Créer un contenu persuasif basé sur cible, douleur, bénéfices, preuves, objections et CTA.",
+      "default_output": [
+        "angle",
+        "value_proposition",
+        "copy",
+        "CTA"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "prompt",
+      "class": "operation",
+      "default_depth": "DEEP",
+      "mission": "Transformer un objectif en prompt robuste, réutilisable, testable et contraint.",
+      "default_output": [
+        "role",
+        "context",
+        "inputs",
+        "process",
+        "output_contract",
+        "guardrails",
+        "tests"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "summarize",
+      "class": "presentation",
+      "default_depth": "FAST",
+      "mission": "Compresser l’information sans perdre ce qui influence la compréhension ou la décision.",
+      "default_output": [
+        "summary",
+        "critical_points",
+        "decisions"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "optimize",
+      "class": "operation",
+      "default_depth": "STANDARD",
+      "mission": "Améliorer l’existant en préservant ce qui fonctionne et en mesurant les gains.",
+      "default_output": [
+        "baseline",
+        "bottlenecks",
+        "changes",
+        "expected_gain",
+        "validation"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "simplify",
+      "class": "operation",
+      "default_depth": "STANDARD",
+      "mission": "Réduire la complexité sans sacrifier les capacités essentielles.",
+      "default_output": [
+        "removals",
+        "merges",
+        "simplified_design",
+        "preserved_capabilities"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "continue",
+      "class": "continuity",
+      "default_depth": "STANDARD",
+      "mission": "Reprendre le travail exactement là où il s’est arrêté.",
+      "default_output": [
+        "continued_work"
+      ],
+      "requires_target": false,
+      "quality_gate": true
+    },
+    {
+      "name": "next",
+      "class": "continuity",
+      "default_depth": "STANDARD",
+      "mission": "Exécuter l’étape logique suivante du travail actif.",
+      "default_output": [
+        "next_step"
+      ],
+      "requires_target": false,
+      "quality_gate": true
+    },
+    {
+      "name": "deeper",
+      "class": "continuity",
+      "default_depth": "DEEP",
+      "mission": "Approfondir uniquement le dernier point ou artefact actif.",
+      "default_output": [
+        "deeper_analysis"
+      ],
+      "requires_target": false,
+      "quality_gate": true
+    },
+    {
+      "name": "fix",
+      "class": "continuity",
+      "default_depth": "STANDARD",
+      "mission": "Corriger les problèmes déjà identifiés dans l’état de travail courant.",
+      "default_output": [
+        "fixes",
+        "validation"
+      ],
+      "requires_target": false,
+      "quality_gate": true
+    },
+    {
+      "name": "redo",
+      "class": "continuity",
+      "default_depth": "STANDARD",
+      "mission": "Reprendre avec une approche réellement différente.",
+      "default_output": [
+        "alternative_approach"
+      ],
+      "requires_target": false,
+      "quality_gate": true
+    },
+    {
+      "name": "focus",
+      "class": "continuity",
+      "default_depth": "STANDARD",
+      "mission": "Limiter la suite du travail à une cible précise.",
+      "default_output": [
+        "focused_output"
+      ],
+      "requires_target": true,
+      "quality_gate": true
+    },
+    {
+      "name": "final",
+      "class": "continuity",
+      "default_depth": "STANDARD",
+      "mission": "Produire une version finale propre et exploitable.",
+      "default_output": [
+        "final_deliverable"
+      ],
+      "requires_target": false,
+      "quality_gate": true
+    }
+  ]
+}
