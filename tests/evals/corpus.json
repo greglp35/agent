@@ -1,0 +1,25 @@
+{
+  "version": "alpha.5",
+  "cases": [
+    {"id":"E001","input":"/audit cible exemple","expect":{"commands":["audit"]}},
+    {"id":"E002","input":"/verify cible exemple","expect":{"commands":["verify"]}},
+    {"id":"E003","input":"/redteam cible exemple","expect":{"commands":["redteam"]}},
+    {"id":"E004","input":"/deepthink cible exemple","expect":{"commands":["deepthink"]}},
+    {"id":"E005","input":"/challenge cible exemple","expect":{"commands":["challenge"]}},
+    {"id":"E006","input":"/expert /audit application de gestion de stock","expect":{"commands":["expert","audit"]}},
+    {"id":"E007","input":"/council /decision application de gestion de stock","expect":{"commands":["council","decision"]}},
+    {"id":"E008","input":"/decision A ou B --deep","semantic":true,"expect":{"commands":["decision"],"depth":"DEEP","execution_status":"EXECUTED"}},
+    {"id":"E009","input":"/research réglementation --web","expect":{"commands":["research"]}},
+    {"id":"E010","input":"/spec application --deep","semantic":true,"expect":{"commands":["spec"],"depth":"DEEP","execution_status":"EXECUTED"}},
+    {"id":"E011","input":"/architect application --deep","semantic":true,"expect":{"commands":["architect"],"depth":"DEEP","execution_status":"EXECUTED"}},
+    {"id":"E012","input":"/build prototype","expect":{"commands":["build"]}},
+    {"id":"E013","input":"/debug import Excel","expect":{"commands":["debug"]}},
+    {"id":"E014","input":"/risk déploiement --forensic","expect":{"commands":["risk"],"depth":"FORENSIC"}},
+    {"id":"E015","input":"/plan migration --deep","semantic":true,"expect":{"commands":["plan"],"depth":"DEEP","execution_status":"EXECUTED"}},
+    {"id":"E016","input":"/copywriter fiche produit --deep","semantic":true,"expect":{"commands":["copywriter"],"depth":"DEEP","execution_status":"EXECUTED"}},
+    {"id":"E017","input":"/prompt agent audit --deep","semantic":true,"expect":{"commands":["prompt"],"depth":"DEEP","execution_status":"EXECUTED"}},
+    {"id":"E018","input":"/fullaudit mon projet --forensic","expect":{"depth":"FORENSIC"}},
+    {"id":"E019","input":"/bestdecision A ou B","expect":{}},
+    {"id":"E020","input":"/challenge idée --bias --devil","expect":{"commands":["challenge"]}}
+  ]
+}
