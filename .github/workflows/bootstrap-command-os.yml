@@ -10,23 +10,29 @@ permissions:
 
 jobs:
   unpack:
-    if: contains(github.event.head_commit.message, 'bootstrap bundle')
+    if: contains(github.event.head_commit.message, 'assemble source')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Unpack COMMAND OS source bundle
+      - name: Reassemble and unpack COMMAND OS source
         run: |
           python - <<'PY'
           from pathlib import Path
-          import zipfile
-          archive = Path('bundle/COMMAND_OS_CORE_v2.zip')
+          import base64, shutil, zipfile
+          bundle = Path('bundle')
+          parts = sorted(bundle.glob('part-*.txt'))
+          if not parts:
+              raise SystemExit('No bundle parts found')
+          encoded = ''.join(p.read_text(encoding='utf-8').strip() for p in parts)
+          archive = bundle / 'source.zip'
+          archive.write_bytes(base64.b64decode(encoded))
           with zipfile.ZipFile(archive) as z:
               z.extractall('.')
-          archive.unlink()
-          Path('bundle').rmdir()
+          shutil.rmtree(bundle)
           Path('.github/workflows/bootstrap-command-os.yml').unlink()
+          Path('TRIGGER.md').unlink(missing_ok=True)
           PY
       - name: Commit unpacked source
         run: |
