@@ -1,0 +1,48 @@
+(* COMMAND OS CORE v2 — EBNF *)
+
+command_line     = pipeline , [ subject ] , { option } ;
+
+pipeline         = command , { ( ws , command ) | ( ws , strict_pipe , ws , command ) } ;
+
+strict_pipe      = ">>" ;
+
+command          = "/" , identifier , [ command_arg ] ;
+
+command_arg      = "=" , value ;
+
+option           = ws , "--" , identifier , [ "=" , value ] ;
+
+subject          = ws , free_text ;
+
+value            = quoted_string
+                 | number
+                 | boolean
+                 | list
+                 | identifier ;
+
+list             = "[" , [ value , { "," , value } ] , "]" ;
+
+quoted_string    = '"' , { quoted_char } , '"'
+                 | "'" , { quoted_char } , "'" ;
+
+boolean          = "true" | "false" ;
+
+number           = [ "-" ] , digit , { digit } , [ "." , digit , { digit } ] ;
+
+identifier       = letter , { letter | digit | "_" | "-" } ;
+
+free_text        = text_char , { text_char } ;
+
+ws               = " " , { " " } ;
+
+letter           = "A"…"Z" | "a"…"z" ;
+digit            = "0"…"9" ;
+
+quoted_char      = ? any character except unescaped matching quote ? ;
+text_char        = ? any character not parsed as a top-level option or strict pipe ? ;
+
+(* Normalisation recommandée :
+   /focus="authentification OAuth"
+   --lens=["security","ux"]
+   --role="architecte logiciel"
+*)

@@ -1,0 +1,63 @@
+{
+  "schema_version": "2.0",
+  "version": "2.0.0-alpha.2",
+  "aliases": [
+    {
+      "alias": "humanize",
+      "expands_to": {
+        "command": "write",
+        "options": {
+          "human": true
+        }
+      }
+    },
+    {
+      "alias": "email",
+      "expands_to": {
+        "command": "write",
+        "options": {
+          "mode": "email"
+        }
+      }
+    },
+    {
+      "alias": "critic",
+      "expands_to": {
+        "command": "challenge"
+      }
+    },
+    {
+      "alias": "brainstorm",
+      "expands_to": {
+        "command": "ideate"
+      }
+    },
+    {
+      "alias": "tldr",
+      "expands_to": {
+        "command": "summarize",
+        "options": {
+          "fast": true
+        }
+      }
+    },
+    {
+      "alias": "upgrade",
+      "expands_to": {
+        "command": "optimize"
+      }
+    },
+    {
+      "alias": "shorten",
+      "expands_to": {
+        "command": "summarize"
+      }
+    },
+    {
+      "alias": "security",
+      "expands_to": {
+        "option": "security"
+      }
+    }
+  ]
+}

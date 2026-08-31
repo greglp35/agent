@@ -1,0 +1,111 @@
+{
+  "schema_version": "2.0",
+  "version": "2.0.0-alpha.1",
+  "macros": [
+    {
+      "name": "fullaudit",
+      "default_depth": "DEEP",
+      "pipeline": [
+        "expert",
+        "audit",
+        "challenge",
+        {
+          "command": "verify",
+          "conditional": "material factual claims require verification"
+        },
+        "prioritize",
+        "plan"
+      ],
+      "intent": "Audit complet suivi d’un plan d’action priorisé."
+    },
+    {
+      "name": "bestdecision",
+      "default_depth": "DEEP",
+      "pipeline": [
+        "research",
+        "verify",
+        "deepthink",
+        "compare",
+        "challenge",
+        "decision"
+      ],
+      "intent": "Décision robuste basée sur faits, alternatives et objections."
+    },
+    {
+      "name": "expertbuild",
+      "default_depth": "DEEP",
+      "pipeline": [
+        "expert",
+        "spec",
+        "architect",
+        "build",
+        {
+          "command": "test",
+          "conditional": "execution or artifact can be tested"
+        },
+        "audit"
+      ],
+      "intent": "Concevoir, réaliser, tester puis auditer."
+    },
+    {
+      "name": "contentpro",
+      "default_depth": "STANDARD",
+      "pipeline": [
+        {
+          "command": "research",
+          "conditional": "missing or current factual input required"
+        },
+        "expert",
+        "copywriter",
+        "write"
+      ],
+      "default_modifiers": [
+        "no-fluff"
+      ],
+      "intent": "Créer un contenu crédible, persuasif et naturel."
+    },
+    {
+      "name": "redteampro",
+      "default_depth": "FORENSIC",
+      "pipeline": [
+        "audit",
+        "challenge",
+        "risk",
+        "redteam"
+      ],
+      "default_modifiers": [
+        "safe"
+      ],
+      "intent": "Audit adversarial approfondi des risques et modes d’échec."
+    },
+    {
+      "name": "specbuild",
+      "default_depth": "DEEP",
+      "pipeline": [
+        "expert",
+        "spec",
+        "architect",
+        "build",
+        "test"
+      ],
+      "intent": "Passer d’un besoin à un artefact testable."
+    },
+    {
+      "name": "rootdecision",
+      "default_depth": "DEEP",
+      "pipeline": [
+        "deepthink",
+        "compare",
+        "decision"
+      ],
+      "default_methods": [
+        "rootcause",
+        "assumptions",
+        "falsify",
+        "second-order",
+        "reversibility"
+      ],
+      "intent": "Décision fondée sur causes racines et robustesse."
+    }
+  ]
+}

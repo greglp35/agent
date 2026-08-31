@@ -1,0 +1,258 @@
+{
+  "schema_version": "2.0",
+  "version": "2.0.0-alpha.3",
+  "default_runtime": {
+    "local.compile": true,
+    "local.state": true,
+    "local.trace": true,
+    "llm.reason": false,
+    "web.search": false,
+    "files.read": false,
+    "files.write": false,
+    "github.read": false,
+    "github.write": false,
+    "deploy.preview": false,
+    "deploy.production": false,
+    "email.read": false,
+    "email.send": false,
+    "calendar.read": false,
+    "calendar.write": false
+  },
+  "command_requirements": {
+    "research": {
+      "base": [
+        "llm.reason"
+      ],
+      "option_requirements": {
+        "web": "web.search"
+      }
+    },
+    "verify": {
+      "base": [
+        "llm.reason"
+      ],
+      "option_requirements": {
+        "web": "web.search"
+      }
+    },
+    "benchmark": {
+      "base": [
+        "llm.reason"
+      ],
+      "option_requirements": {
+        "web": "web.search"
+      }
+    },
+    "data": {
+      "base": [
+        "llm.reason"
+      ],
+      "optional": [
+        "files.read"
+      ]
+    },
+    "expert": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "council": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "deepthink": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "challenge": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "audit": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "decision": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "compare": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "prioritize": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "strategy": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "forecast": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "spec": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "architect": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "debug": {
+      "base": [
+        "llm.reason"
+      ],
+      "optional": [
+        "files.read"
+      ]
+    },
+    "test": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "simulate": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "experiment": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "measure": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "risk": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "plan": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "ideate": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "write": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "copywriter": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "prompt": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "summarize": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "optimize": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "simplify": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "redteam": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "teach": {
+      "base": [
+        "llm.reason"
+      ]
+    },
+    "build": {
+      "base": [
+        "llm.reason"
+      ],
+      "optional": [
+        "files.write",
+        "github.write",
+        "deploy.preview",
+        "deploy.production"
+      ]
+    },
+    "automate": {
+      "base": [
+        "llm.reason"
+      ],
+      "optional": [
+        "calendar.write",
+        "email.send",
+        "github.write"
+      ]
+    },
+    "continue": {
+      "base": [
+        "local.state"
+      ]
+    },
+    "next": {
+      "base": [
+        "local.state"
+      ]
+    },
+    "deeper": {
+      "base": [
+        "llm.reason",
+        "local.state"
+      ]
+    },
+    "fix": {
+      "base": [
+        "llm.reason",
+        "local.state"
+      ]
+    },
+    "redo": {
+      "base": [
+        "llm.reason",
+        "local.state"
+      ]
+    },
+    "focus": {
+      "base": [
+        "local.state"
+      ]
+    },
+    "final": {
+      "base": [
+        "llm.reason",
+        "local.state"
+      ]
+    }
+  }
+}

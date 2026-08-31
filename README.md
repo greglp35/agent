@@ -59,7 +59,6 @@ Cette version ajoute un prototype exécutable :
 ### Test rapide
 
 ```bash
-cd COMMAND_OS_CORE_v2
 python -m runtime.cli /expert /audit "application de gestion de stock" --forensic --security
 ```
 
@@ -68,6 +67,11 @@ Ou :
 ```bash
 ./command-os /council /audit /decision "mon application" --forensic --security --terrain
 ```
+
+### Limite volontaire
+
+Le runtime alpha.2 **compile et planifie** les commandes. Il ne branche pas encore
+les outils réels (web, fichiers, GitHub, déploiement, etc.).
 
 ## Alpha.3 — Execution Contract & Capability Resolver
 
@@ -83,3 +87,7 @@ Cette version ajoute :
 - nouveaux tests runtime.
 
 Le runtime alpha.3 ne prétend jamais avoir exécuté un outil non branché.
+
+## Qualité continue
+
+La branche de développement exécute automatiquement les tests runtime et la validation des registres JSON via GitHub Actions.
